@@ -2,15 +2,19 @@
 #define PENGUIN_HPP
 
 #include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
+#include "Constants.hpp"
 
 class Penguin {
 private:
-    sf::Vector2f speed;
-    sf::Vector2f pos;
+    float speed;
+    int pos;
+    int middle;
 public:
-    Penguin();
+    Penguin(int middle);
+    void update(float deltaTime);
+    void draw(sf::RenderWindow &window);
     void setSpeed(const float &value);
-    sf::Vector2f getPos() const;
 };
 
 #endif // PENGUIN_HPP
