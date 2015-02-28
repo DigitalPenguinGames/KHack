@@ -14,6 +14,7 @@ Penguin::Penguin(int middle) : middle(middle) {
   speed = 0;
   frame = 0;
   animationTimer = 0;
+
   penguinSpeedUp = middle*2;
   gravity = penguinSpeedUp*2.5;
   softGravity = middle;
@@ -23,8 +24,8 @@ void Penguin::update(float deltaTime) {
   float aPos = pos;
   pos += deltaTime*speed;
 
-  if (aPos < middle && pos > middle && dir == direction::up ||
-      aPos > middle && pos < middle && dir == direction::down) speed = speed / 10;
+  if ((aPos < middle && pos > middle && dir == direction::up  ) ||
+      (aPos > middle && pos < middle && dir == direction::down)) speed = speed / 10;
 
   float auxGrav = (abs(pos-middle)<100?softGravity:gravity);
 

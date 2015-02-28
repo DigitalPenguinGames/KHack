@@ -17,8 +17,8 @@ namespace direction {
 
 namespace obstacle {
   enum obsType {
-    Boat,
     Iceberg,
+    Buoy,
 
     qtt
   };
