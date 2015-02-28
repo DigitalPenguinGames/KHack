@@ -2,8 +2,7 @@
 #define CONSTANTS_HPP
 
 namespace constant {
-  static const float penguinSpeed = 100;
-  static const float gravity = 98;
+  static const float timeToNextFramePeng = 0.2;
 }
 
 namespace obsType {

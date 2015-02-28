@@ -1,13 +1,14 @@
 #include "GameManger.hpp"
 
 void GameManger::handleUltraHardwareOMG() {
+  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape)) window.close();
   bool up = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
   bool down = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right);
   if (!up || !down) {
       if (up && !up_)
-        penguin.setSpeed(constant::penguinSpeed);
+        penguin.setSpeed(1);
       else if (down && !down_)
-        penguin.setSpeed(constant::penguinSpeed);
+        penguin.setSpeed(-1);
     }
   up_ = up;
   down_ = down;
@@ -26,7 +27,7 @@ void GameManger::run() {
   clock.restart();
   float deltaTime;
   while (window.isOpen()) {
-      float deltaTime = clock.restart().asSeconds();
+      deltaTime = clock.restart().asSeconds();
       sf::Event event;
       while (window.pollEvent(event)) {
           if (event.type == sf::Event::Closed) window.close();
