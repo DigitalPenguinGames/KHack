@@ -16,12 +16,12 @@ class GameManger {
 private:
     sf::RenderWindow window;
     Background background;
+    ObstacleManager obstacles;
     Penguin penguin;
 
     bool up_;
     bool down_;
 
-    void initObstacles();
     void handleUltraHardwareOMG();
 public:
     GameManger();
