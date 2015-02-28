@@ -3,9 +3,19 @@
 
 namespace constant {
   static const float timeToNextFramePeng = 0.2;
+  static const float backgroundSpeed [] = {0, 5, 50, 500};
+  static const float qttBackgrounds = 4;
 }
 
-namespace obsType {
+namespace direction {
+  enum dir {
+    up,
+    down
+  };
+
+}
+
+namespace obstacle {
   enum obsType {
     Boat,
     Iceberg,

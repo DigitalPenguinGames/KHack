@@ -10,6 +10,7 @@ private:
     float speed;
     float pos;
     int middle;
+    direction::dir dir;
 
     float penguinSpeedUp;
     float gravity;

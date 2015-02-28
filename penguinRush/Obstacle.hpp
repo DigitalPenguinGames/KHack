@@ -7,7 +7,7 @@ class Obstacle {
 private:
 
 public:
-    Obstacle(obsType::obsType type);
+    Obstacle(obstacle::obsType type);
     void update(float deltaTime);
 };
 

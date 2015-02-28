@@ -19,16 +19,22 @@ Penguin::Penguin(int middle) : middle(middle) {
 }
 
 void Penguin::update(float deltaTime) {
+  float aPos = pos;
   pos += deltaTime*speed;
+
+  if (aPos < middle && pos > middle && dir == direction::up ||
+      aPos > middle && pos < middle && dir == direction::down) speed = speed / 10;
+
   if (pos < middle) speed += gravity*deltaTime;
   else speed -= gravity*deltaTime;
 
 
-//  animationTimer += deltaTime;
-//  while (animationTimer > constant::timeToNextFramePeng) {
-//      animationTimer -= constant::timeToNextFramePeng;
-//      frame = (frame + 1) % 2;
-//    }
+
+  animationTimer += deltaTime;
+  while (animationTimer > constant::timeToNextFramePeng) {
+      animationTimer -= constant::timeToNextFramePeng;
+      frame = (frame + 1) % 2;
+    }
 }
 
 void Penguin::draw(sf::RenderWindow &window) {
@@ -37,4 +43,8 @@ void Penguin::draw(sf::RenderWindow &window) {
 }
 
 
-void Penguin::setSpeed(const float &value) { speed = value*penguinSpeedUp; }
+void Penguin::setSpeed(const float &value) {
+  if (value > 0) dir = direction::down;
+  else dir = direction::up;
+  speed = value*penguinSpeedUp;
+}
