@@ -25,10 +25,10 @@ void Background::update(float deltatime){
         sprites[i].move(-constant::backgroundSpeed[i]*deltatime, 0);
         secondSprites[i].move(-constant::backgroundSpeed[i]*deltatime, 0);
 
-        if(sprites[i].getPosition().x <= -sprites[i].getGlobalBounds().width)
-            sprites[i].setPosition(sprites[i].getGlobalBounds().width,0);
-        if(secondSprites[i].getPosition().x <= -secondSprites[i].getGlobalBounds().width)
-            secondSprites[i].setPosition(secondSprites[i].getGlobalBounds().width,0);
+        if(sprites[i].getPosition().x <= -sprites[i].getLocalBounds().width)
+            sprites[i].setPosition(sprites[i].getLocalBounds().width,0);
+        if(secondSprites[i].getPosition().x <= -secondSprites[i].getLocalBounds().width)
+            secondSprites[i].setPosition(secondSprites[i].getLocalBounds().width,0);
     }
 
 }
