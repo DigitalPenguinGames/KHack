@@ -2,19 +2,19 @@
 
 Background::Background(){
 
-    textures[0].loadFromFile("background.png");
+    textures[0].loadFromFile("res/background.png");
     sprites[0].setTexture(textures[0]);
     sprites[0].setPosition(0,0);
 
-    textures[1].loadFromFile("background1.png");
+    textures[1].loadFromFile("res/background1.png");
     sprites[1].setTexture(textures[1]);
     sprites[1].setPosition(0,0);
 
-    textures[2].loadFromFile("background2.png");
+    textures[2].loadFromFile("res/background2.png");
     sprites[2].setTexture(textures[2]);
     sprites[2].setPosition(0,0);
 
-    textures[3].loadFromFile("background3.png");
+    textures[3].loadFromFile("res/background3.png");
     sprites[3].setTexture(textures[3]);
     sprites[3].setPosition(0,0);
 
