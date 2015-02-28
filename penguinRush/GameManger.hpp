@@ -6,17 +6,15 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 
-#include <list>
 
 #include "Penguin.hpp"
-#include "Obstacle.hpp"
+#include "ObstacleManager.hpp"
 #include "Background.hpp"
 #include "Constants.hpp"
 
 class GameManger {
 private:
     sf::RenderWindow window;
-    std::list<Obstacle> obstacles;
     Background background;
     Penguin penguin;
 

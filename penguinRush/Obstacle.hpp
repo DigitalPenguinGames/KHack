@@ -1,10 +1,13 @@
 #ifndef OBSTACLE_HPP
 #define OBSTACLE_HPP
 
-class Obstacle
-{
+#include "Constants.hpp"
+
+class Obstacle {
+private:
+
 public:
-    Obstacle();
+    Obstacle(obsType::obsType type);
 };
 
 #endif // OBSTACLE_HPP

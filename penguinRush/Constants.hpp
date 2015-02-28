@@ -5,5 +5,14 @@ namespace constant {
 static const float penguinSpeed = 100;
 }
 
+namespace obsType {
+  enum obsType {
+    Boat,
+    Iceberg,
+
+    qtt
+  };
+}
+
 
 #endif // CONSTANTS_HPP

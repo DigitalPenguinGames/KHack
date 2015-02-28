@@ -9,9 +9,9 @@ void GameManger::handleUltraHardwareOMG() {
     bool down = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right);
     if (!up || !down) {
         if (up && !up_)
-            penguin.setSpeed = constant::PenguinSpeed;
+            penguin.setSpeed(constant::penguinSpeed);
         else if (down && !down_)
-            penguin.setSpeed = -constant::penguinSpeed;
+            penguin.setSpeed(constant::penguinSpeed);
     }
     up_ = up;
     down_ = down;
