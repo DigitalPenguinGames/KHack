@@ -2,9 +2,10 @@
 #define CONSTANTS_HPP
 
 namespace constant {
-  static const float timeToNextFramePeng = 0.2;
-  static const float backgroundSpeed [] = {0, 5, 50, 500};
-  static const float qttBackgrounds = 4;
+    static const float qttBackgrounds = 4;
+    static const float obstacleSpeed = 100;
+    static const float timeToNextFramePeng = 0.2;
+    static const float backgroundSpeed [] = {0, 5, 50, 500};
 }
 
 namespace direction {
