@@ -1,7 +1,6 @@
 #include "ObstacleManager.hpp"
 
-ObstacleManager::ObstacleManager()
-{
+ObstacleManager::ObstacleManager() {
 }
 
 void ObstacleManager::update(float deltaTime) {

@@ -14,6 +14,7 @@ private:
 
     float penguinSpeedUp;
     float gravity;
+    float softGravity;
 
     // Texture && Sprite
     sf::Texture text[2];
