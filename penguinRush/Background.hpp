@@ -10,9 +10,9 @@ class Background {
 
 private:
 
-    std::vector<int> speeds;
     std::vector<sf::Sprite> sprites;
     std::vector<sf::Texture> textures;
+    std::vector<sf::Sprite> secondSprites;
 
 
 public:

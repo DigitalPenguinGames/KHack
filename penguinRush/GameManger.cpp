@@ -26,7 +26,7 @@ void GameManger::run() {
   clock.restart();
   float deltaTime;
   while (window.isOpen()) {
-      float deltaTime = clock.restart().asSeconds();
+      deltaTime = clock.restart().asSeconds();
       sf::Event event;
       while (window.pollEvent(event)) {
           if (event.type == sf::Event::Closed) window.close();

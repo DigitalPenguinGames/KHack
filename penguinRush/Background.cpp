@@ -1,36 +1,47 @@
 #include "Background.hpp"
 
 Background::Background(){
+    sprites = std::vector<sf::Sprite> (4);
+    textures = std::vector<sf::Texture> (4);
+    secondSprites = std::vector<sf::Sprite> (4);
+
 
     textures[0].loadFromFile("res/background.png");
-    sprites[0].setTexture(textures[0]);
-    sprites[0].setPosition(0,0);
-
     textures[1].loadFromFile("res/background1.png");
-    sprites[1].setTexture(textures[1]);
-    sprites[1].setPosition(0,0);
-
     textures[2].loadFromFile("res/background2.png");
-    sprites[2].setTexture(textures[2]);
-    sprites[2].setPosition(0,0);
-
     textures[3].loadFromFile("res/background3.png");
-    sprites[3].setTexture(textures[3]);
-    sprites[3].setPosition(0,0);
 
+    for(int i = 0; i < constant::qttBackgrounds; ++i){
+        sprites[i].setTexture(textures[i]);
+        secondSprites[i].setTexture(textures[i]);
+        sprites[i].setPosition(0,0);
+        secondSprites[i].setPosition(2000,0);
+    }
 }
 
 void Background::update(float deltatime){
     //      /cry
-    for(int i = 0; i < constant::backgroundSpeed.size(); ++i){
-        sprites[i].move(constant::backgroundSpeed[i]*deltatime, 0);
+    for(int i = 0; i < constant::qttBackgrounds; ++i){
+        sprites[i].move(-constant::backgroundSpeed[i]*deltatime, 0);
+        secondSprites[i].move(-constant::backgroundSpeed[i]*deltatime, 0);
+
+        if(sprites[i].getPosition().x <= -sprites[i].getGlobalBounds().width)
+            sprites[i].setPosition(sprites[i].getGlobalBounds().width,0);
+        if(secondSprites[i].getPosition().x <= -secondSprites[i].getGlobalBounds().width)
+            secondSprites[i].setPosition(secondSprites[i].getGlobalBounds().width,0);
     }
+
 }
 
 void Background::draw(sf::RenderWindow &window){
-    for(int i = 0; i < constant::backgroundSpeed.size(); ++i){
-        sprites[i].setScale(window.getSize().x/sprite.getGlobalBounds().width,
-                        window.getSize().y/sprite.getGlobalBounds().height);
+
+    for(int i = 0; i < constant::qttBackgrounds; ++i){
+        sprites[i].setScale(window.getSize().x/sprites[i].getLocalBounds().width,
+                        window.getSize().y/sprites[i].getLocalBounds().height);
+        secondSprites[i].setScale(window.getSize().x/secondSprites[i].getLocalBounds().width,
+                        window.getSize().y/secondSprites[i].getLocalBounds().height);
         window.draw(sprites[i]);
+        window.draw(secondSprites[i]);
     }
+
 }
