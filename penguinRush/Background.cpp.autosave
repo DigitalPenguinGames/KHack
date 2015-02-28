@@ -7,9 +7,11 @@ Background::Background(){
 }
 
 void Background::update(float deltatime){
-
+    //      /cry
 }
 
 void Background::draw(sf::RenderWindow &window){
-
+    sprite.setScale(window.getSize().x/sprite.getGlobalBounds().width, 
+                    window.getSize().y/sprite.getGlobalBounds().height);
+    window.draw(sprite);
 }
