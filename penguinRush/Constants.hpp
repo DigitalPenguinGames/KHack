@@ -2,10 +2,11 @@
 #define CONSTANTS_HPP
 
 namespace constant {
-static const float penguinSpeed = 100;
+    static const float penguinSpeed = 100;
+    static const float backgroundSpeed [] = {0, 5, 50, 500};
 }
 
-namespace obsType {
+namespace obstacle {
   enum obsType {
     Boat,
     Iceberg,
