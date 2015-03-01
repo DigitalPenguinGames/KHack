@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-Penguin::Penguin(int middle) : middle(middle) {
+Penguin::Penguin(int middle) : middle(middle), particles(1000) {
   text[0].loadFromFile("res/penguin1.png");
   text[1].loadFromFile("res/penguin2.png");
   sprite[0].setTexture(text[0]);
@@ -18,6 +18,7 @@ Penguin::Penguin(int middle) : middle(middle) {
   penguinSpeedUp = middle*2;
   gravity = penguinSpeedUp*2.5;
   softGravity = middle;
+
 }
 
 void Penguin::update(float deltaTime) {
@@ -39,11 +40,18 @@ void Penguin::update(float deltaTime) {
       animationTimer -= constant::timeToNextFramePeng;
       frame = (frame + 1) % 2;
     }
+
+  particles.setEmitter(sf::Vector2f(sprite[frame].getPosition().x,
+          sprite[frame].getPosition().y+sprite[frame].getGlobalBounds().height/2));
+  sf::Time time;
+  time = sf::seconds(deltaTime);
+  particles.update(time);
 }
 
 void Penguin::draw(sf::RenderWindow &window) {
   sprite[frame].setPosition(constant::penguinInitX,pos);
   window.draw(sprite[frame]);
+  window.draw(particles);
 }
 
 
