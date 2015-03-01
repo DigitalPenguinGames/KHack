@@ -9,6 +9,8 @@ Obstacle::Obstacle(obstacle::obsType type, float x, float y) {
     case obstacle::Buoy:
       text.loadFromFile("res/buoy.png");
       break;
+    case obstacle::Bottle:
+      text.loadFromFile("res/bottle.png");
     default:
       std::cout << "Te olvidas de algo" << std::endl;
       break;
@@ -20,6 +22,8 @@ Obstacle::Obstacle(obstacle::obsType type, float x, float y) {
       break;
     case obstacle::Buoy:
       sprite.setOrigin(0,sprite.getGlobalBounds().height*4/5);
+    case obstacle::Bottle:
+      sprite.setOrigin(0,sprite.getLocalBounds().height/2);
     default:
       break;
     }
