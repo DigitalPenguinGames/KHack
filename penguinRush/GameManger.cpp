@@ -32,11 +32,9 @@ GameManger::GameManger() :
   up_ = false;
   down_ = false;
   srand(time(NULL));
+
 }
 
-sf::Text text;
-sf::Font font;
-font.loadFromFile();
 void GameManger::run() {
   sf::Clock clock;
   clock.restart();
