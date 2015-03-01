@@ -60,7 +60,7 @@ private:
 
     void resetParticle(std::size_t index) {
         // give a random velocity and lifetime to the particle
-        float angle = -1*((std::rand() % 45) +135) * 3.14f / 180.f;
+      float angle = -1*((std::rand() % 45) +125+rand()%20) * 3.14f / 180.f;
         float speed = (std::rand() % 250) + 250.f;
         m_particles[index].velocity = sf::Vector2f(std::cos(angle) * speed, std::sin(angle) * speed );
         m_particles[index].lifetime = sf::milliseconds((std::rand() % 2000) + 1000);

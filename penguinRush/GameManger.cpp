@@ -36,7 +36,7 @@ GameManger::GameManger() :
 
 sf::Text text;
 sf::Font font;
-font.loadFromFile();
+//font.loadFromFile();
 void GameManger::run() {
   sf::Clock clock;
   clock.restart();
