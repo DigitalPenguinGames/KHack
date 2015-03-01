@@ -9,12 +9,18 @@
 
 class ObstacleManager {
 private:
-  std::vector<Obstacle> obsProto;
-  std::list<Obstacle> obstacles;
+  int initX;
+  int initY;
+
+  std::list<Obstacle*> obstacles;
+
+  float maxTime;
+  float minTime;
+  float timer;
 
   void initObstacles();
 public:
-  ObstacleManager();
+  ObstacleManager(int initX, int initY);
   void update(float deltaTime);
   void draw(sf::RenderWindow &window);
 };

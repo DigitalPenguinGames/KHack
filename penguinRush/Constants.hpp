@@ -3,9 +3,12 @@
 
 namespace constant {
     static const float qttBackgrounds = 4;
-    static const float obstacleSpeed = 100;
+    static const float obstacleSpeed = 600;
     static const float timeToNextFramePeng = 0.2;
     static const float backgroundSpeed [] = {0, 5, 50, 500};
+    static const float minTimeObstacles = 5;
+    static const float maxTimeObstacles = minTimeObstacles+1;
+
 }
 
 namespace direction {
@@ -18,8 +21,8 @@ namespace direction {
 
 namespace obstacle {
   enum obsType {
-    Boat,
     Iceberg,
+//    Buoy,
 
     qtt
   };

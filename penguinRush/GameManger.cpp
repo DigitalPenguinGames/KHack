@@ -17,10 +17,13 @@ void GameManger::handleUltraHardwareOMG() {
 
 GameManger::GameManger() :
   window(sf::VideoMode::getDesktopMode(),"Penguin Rush"),
-  penguin(sf::VideoMode::getDesktopMode().height/2)
+  penguin(sf::VideoMode::getDesktopMode().height/2),
+  obstacles(sf::VideoMode::getDesktopMode().width,sf::VideoMode::getDesktopMode().height/2),
+  o(obstacle::Iceberg,200,200)
 {
   up_ = false;
   down_ = false;
+  srand(time(NULL));
 }
 
 void GameManger::run() {
@@ -43,6 +46,7 @@ void GameManger::run() {
       penguin.update(deltaTime);
       background.update(deltaTime);
       frontgroud.update(deltaTime, window);
+      bool gameFinished = checkColissions();
 
       window.clear();
       background.draw(window);
@@ -51,4 +55,8 @@ void GameManger::run() {
       frontgroud.draw(window);
       window.display();
     }
+}
+
+bool GameManger::checkColissions()
+{
 }
