@@ -2,24 +2,35 @@
 
 void GameManger::handleUltraHardwareOMG() {
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape)) window.close();
-  bool up = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
-  bool down = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right);
-  if (!up || !down) {
-      if (up && !up_)
-        penguin.setSpeed(1);
-      else if (down && !down_)
-        penguin.setSpeed(-1);
+  if (running) {
+      bool up = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+      bool down = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right);
+      if (!up || !down) {
+          if (up && !up_)
+            penguin.setSpeed(1);
+          else if (down && !down_)
+            penguin.setSpeed(-1);
+        }
+      up_ = up;
+      down_ = down;
     }
-  up_ = up;
-  down_ = down;
-
+  else if(timerRestart > 1) {
+      bool up = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+      bool down = sf::Mouse::isButtonPressed(sf::Mouse::Button::Right);
+      if (up || down) {
+          obstacles.initObstacles();
+          running = true;
+        }
+    }
 }
 
 
 GameManger::GameManger() :
   window(sf::VideoMode::getFullscreenModes()[0],"Penguin Rush",sf::Style::Fullscreen),
   penguin(window.getSize().y*1.05/2),
-  obstacles(window.getSize().x,window.getSize().y*1.05/2)
+  obstacles(window.getSize().x,window.getSize().y*1.05/2),
+  ui(window.getSize()),
+  running(true)
 {
   sea.loadFromFile("res/sea.png");
   seaSprite[0].setTexture(sea);
@@ -42,6 +53,7 @@ void GameManger::run() {
   float deltaTime;
   while (window.isOpen()) {
       deltaTime = clock.restart().asSeconds();
+      timerRestart += deltaTime;
       sf::Event event;
       while (window.pollEvent(event)) {
           if (event.type == sf::Event::Closed) window.close();
@@ -54,7 +66,9 @@ void GameManger::run() {
 
       bool gameFinished = checkColissions();
       if (gameFinished) {
+          running = false;
           obstacles.stop();
+          timerRestart = 0;
         }
 
       background.update(deltaTime);
@@ -65,6 +79,7 @@ void GameManger::run() {
         seaSprite[0].move(seaSprite[0].getGlobalBounds().width*2,0);
       if (seaSprite[1].getPosition().x < -seaSprite[1].getGlobalBounds().width)
         seaSprite[1].move(seaSprite[1].getGlobalBounds().width*2,0);
+      ui.update(deltaTime);
 
       window.clear();
       background.draw(window);
@@ -73,6 +88,7 @@ void GameManger::run() {
       frontgroud.draw(window);
       window.draw(seaSprite[0]);
       window.draw(seaSprite[1]);
+      ui.draw(window,running);
       window.display();
     }
 }

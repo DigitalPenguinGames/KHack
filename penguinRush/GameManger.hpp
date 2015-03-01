@@ -21,7 +21,10 @@ private:
     FrontGround frontgroud;
     ObstacleManager obstacles;
     Penguin penguin;
+
     UI ui;
+    bool running;
+    float timerRestart;
 
     bool up_;
     bool down_;
