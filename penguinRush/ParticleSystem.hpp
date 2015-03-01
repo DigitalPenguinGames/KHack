@@ -18,14 +18,14 @@ public:
         m_emitter = position;
     }
 
-    void update(sf::Time elapsed)    {
+    void update(sf::Time elapsed, bool generateNew)    {
         for (std::size_t i = 0; i < m_particles.size(); ++i) {
             // update the particle lifetime
             Particle& p = m_particles[i];
             p.lifetime -= elapsed;
 
             // if the particle is dead, respawn it
-            if (p.lifetime <= sf::Time::Zero)
+            if (p.lifetime <= sf::Time::Zero && generateNew)
                 resetParticle(i);
 
             // update the position of the corresponding vertex
