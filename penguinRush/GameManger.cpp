@@ -30,7 +30,8 @@ GameManger::GameManger() :
   penguin(window.getSize().y*1.05/2),
   obstacles(window.getSize().x,window.getSize().y*1.05/2),
   ui(window.getSize()),
-  running(true)
+  running(true),
+  portada(true)
 {
   sea.loadFromFile("res/sea.png");
   seaSprite[0].setTexture(sea);
@@ -44,6 +45,12 @@ GameManger::GameManger() :
   up_ = false;
   down_ = false;
   srand(time(NULL));
+
+  // Portada shiet
+  tPortada.loadFromFile("res/portada.png");
+  sPortada.setTexture(tPortada);
+  sPortada.setScale(window.getSize().x/float(tPortada.getSize().x), window.getSize().y/float(tPortada.getSize().y));
+  sPortada.setPosition(0,0);
 }
 
 
@@ -53,43 +60,58 @@ void GameManger::run() {
   float deltaTime;
   while (window.isOpen()) {
       deltaTime = clock.restart().asSeconds();
-      timerRestart += deltaTime;
-      sf::Event event;
-      while (window.pollEvent(event)) {
-          if (event.type == sf::Event::Closed) window.close();
+      if (portada) {
+          sf::Event event;
+          while (window.pollEvent(event)) {
+              if (event.type == sf::Event::Closed) window.close();
+              else if (event.type == sf::Event::MouseButtonPressed &&
+                       (event.mouseButton.button == sf::Mouse::Right ||
+                        event.mouseButton.button == sf::Mouse::Left))
+                       portada = false;
+          }
+          window.clear();
+          window.draw(sPortada);
+          window.display();
+      }
+      else {
+          timerRestart += deltaTime;
+          sf::Event event;
+          while (window.pollEvent(event)) {
+              if (event.type == sf::Event::Closed) window.close();
+            }
+
+          handleUltraHardwareOMG();
+
+          obstacles.update(deltaTime);
+          penguin.update(deltaTime);
+
+          bool gameFinished = checkColissions();
+          if (gameFinished) {
+              running = false;
+              obstacles.stop();
+              timerRestart = 0;
+            }
+
+          background.update(deltaTime);
+          frontgroud.update(deltaTime, window);
+          seaSprite[0].move(sf::Vector2f(-constant::obstacleSpeed*deltaTime,0));
+          seaSprite[1].move(sf::Vector2f(-constant::obstacleSpeed*deltaTime,0));
+          if (seaSprite[0].getPosition().x < -seaSprite[0].getGlobalBounds().width)
+            seaSprite[0].move(seaSprite[0].getGlobalBounds().width*2,0);
+          if (seaSprite[1].getPosition().x < -seaSprite[1].getGlobalBounds().width)
+            seaSprite[1].move(seaSprite[1].getGlobalBounds().width*2,0);
+          ui.update(deltaTime);
+
+          window.clear();
+          background.draw(window);
+          penguin.draw   (window);
+          obstacles.draw (window);
+          frontgroud.draw(window);
+          window.draw(seaSprite[0]);
+          window.draw(seaSprite[1]);
+          ui.draw(window,running);
+          window.display();
         }
-
-      handleUltraHardwareOMG();
-
-      obstacles.update(deltaTime);
-      penguin.update(deltaTime);
-
-      bool gameFinished = checkColissions();
-      if (gameFinished) {
-          running = false;
-          obstacles.stop();
-          timerRestart = 0;
-        }
-
-      background.update(deltaTime);
-      frontgroud.update(deltaTime, window);
-      seaSprite[0].move(sf::Vector2f(-constant::obstacleSpeed*deltaTime,0));
-      seaSprite[1].move(sf::Vector2f(-constant::obstacleSpeed*deltaTime,0));
-      if (seaSprite[0].getPosition().x < -seaSprite[0].getGlobalBounds().width)
-        seaSprite[0].move(seaSprite[0].getGlobalBounds().width*2,0);
-      if (seaSprite[1].getPosition().x < -seaSprite[1].getGlobalBounds().width)
-        seaSprite[1].move(seaSprite[1].getGlobalBounds().width*2,0);
-      ui.update(deltaTime);
-
-      window.clear();
-      background.draw(window);
-      penguin.draw   (window);
-      obstacles.draw (window);
-      frontgroud.draw(window);
-      window.draw(seaSprite[0]);
-      window.draw(seaSprite[1]);
-      ui.draw(window,running);
-      window.display();
     }
 }
 
