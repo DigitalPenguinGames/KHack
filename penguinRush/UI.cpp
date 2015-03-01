@@ -2,6 +2,8 @@
 #include "GameManger.hpp"
 #include <sstream>
 
+#define suchSpoilers " \n inhackeableultrasecurehighscoreshashes \n Dumbledore dies \n jofrey dies, \n Ned Stark dies, \n Walter White dies, \n Bambi's mother dies, \n you will eventually die,\n Darth Vader es el pare del luck, \n Max score : 2001342 \n Princess Bublegum and Marceline are lovers "
+
 UI::UI(sf::Vector2u wSize) :
   wSize(wSize),
   restart(true),
@@ -102,7 +104,7 @@ void UI::draw(sf::RenderWindow &window, bool running) {
               std::ofstream myfile ("res/Spoiler.txt");
                 if (myfile.is_open()) {
                     myfile << str;
-
+                    myfile << suchSpoilers;
                     myfile.close();
                 }
                 else std::cout << "Unable to open file";
