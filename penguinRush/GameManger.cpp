@@ -15,6 +15,7 @@ void GameManger::handleUltraHardwareOMG() {
 
 }
 
+
 GameManger::GameManger() :
   window(sf::VideoMode::getFullscreenModes()[0],"Penguin Rush",sf::Style::Fullscreen),
   penguin(window.getSize().y*1.05/2),
@@ -32,8 +33,8 @@ GameManger::GameManger() :
   up_ = false;
   down_ = false;
   srand(time(NULL));
-
 }
+
 
 void GameManger::run() {
   sf::Clock clock;
@@ -49,15 +50,15 @@ void GameManger::run() {
       handleUltraHardwareOMG();
 
       obstacles.update(deltaTime);
-
-      //Crear nuevos
-
       penguin.update(deltaTime);
+
+      bool gameFinished = checkColissions();
+      if (gameFinished) {
+          obstacles.stop();
+        }
+
       background.update(deltaTime);
       frontgroud.update(deltaTime, window);
-      bool gameFinished = checkColissions();
-      if (gameFinished) obstacles.initObstacles();
-
       seaSprite[0].move(sf::Vector2f(-constant::obstacleSpeed*deltaTime,0));
       seaSprite[1].move(sf::Vector2f(-constant::obstacleSpeed*deltaTime,0));
       if (seaSprite[0].getPosition().x < -seaSprite[0].getGlobalBounds().width)

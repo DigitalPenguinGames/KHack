@@ -14,7 +14,8 @@ SOURCES += main.cpp \
     Obstacle.cpp \
     ObstacleManager.cpp \
     Frontground.cpp \
-    Layer.cpp
+    Layer.cpp \
+    UI.cpp
 
 HEADERS += \
     GameManger.hpp \
@@ -25,5 +26,6 @@ HEADERS += \
     ObstacleManager.hpp \
     Frontground.hpp \
     Layer.hpp \
-    ParticleSystem.hpp
+    ParticleSystem.hpp \
+    UI.hpp
 
