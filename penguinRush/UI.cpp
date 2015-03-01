@@ -56,7 +56,7 @@ void UI::update(float deltaTime) {
 void UI::draw(sf::RenderWindow &window, bool running) {
   if (running) {
       if (restart) {
-          restart = 0;
+          restart = false;
           timer = 0;
 
 

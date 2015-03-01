@@ -51,6 +51,15 @@ GameManger::GameManger() :
   sPortada.setTexture(tPortada);
   sPortada.setScale(window.getSize().x/float(tPortada.getSize().x), window.getSize().y/float(tPortada.getSize().y));
   sPortada.setPosition(0,0);
+  font.loadFromFile("res/font.otf");
+  press.setFont(font);
+  press.setString("Step on pad to start!");
+  press.setCharacterSize(50);
+  press.setPosition(window.getSize().x/30,window.getSize().y*3/5);
+  yo.setFont(font);
+  yo.setString("Yo: PENGUINRUSH");
+  yo.setCharacterSize(50);
+  yo.setPosition(window.getSize().x/30,window.getSize().y*3/4);
 }
 
 
@@ -71,6 +80,8 @@ void GameManger::run() {
           }
           window.clear();
           window.draw(sPortada);
+          window.draw(press);
+          window.draw(yo);
           window.display();
       }
       else {

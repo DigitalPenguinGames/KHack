@@ -24,6 +24,7 @@ namespace obstacle {
   enum obsType {
     Iceberg,
     Buoy,
+    Bottle,
 
     qtt
   };
