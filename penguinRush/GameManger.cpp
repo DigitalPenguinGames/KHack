@@ -16,27 +16,25 @@ void GameManger::handleUltraHardwareOMG() {
 }
 
 GameManger::GameManger() :
-  window(sf::VideoMode::getDesktopMode(),"Penguin Rush"),
-  penguin(window.getSize().y/2),
-  obstacles(window.getSize().x,window.getSize().y/2)
+  window(sf::VideoMode::getFullscreenModes()[0],"Penguin Rush",sf::Style::Fullscreen),
+  penguin(window.getSize().y*1.05/2),
+  obstacles(window.getSize().x,window.getSize().y*1.05/2)
 {
   sea.loadFromFile("res/sea.png");
   seaSprite[0].setTexture(sea);
   seaSprite[0].setPosition(0,0);
   seaSprite[0].setScale(window.getSize().x/float(sea.getSize().x),
-                        window.getSize().y/float(sea.getSize().y));
+                        window.getSize().y*1.05/float(sea.getSize().y));
   seaSprite[1].setTexture(sea);
   seaSprite[1].setPosition(window.getSize().x,0);
   seaSprite[1].setScale(window.getSize().x/float(sea.getSize().x),
-                        window.getSize().y/float(sea.getSize().y));
+                        window.getSize().y*1.05/float(sea.getSize().y));
   up_ = false;
   down_ = false;
   srand(time(NULL));
+
 }
 
-sf::Text text;
-sf::Font font;
-//font.loadFromFile();
 void GameManger::run() {
   sf::Clock clock;
   clock.restart();
