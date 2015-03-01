@@ -23,11 +23,12 @@ GameManger::GameManger() :
   sea.loadFromFile("res/sea.png");
   seaSprite[0].setTexture(sea);
   seaSprite[0].setPosition(0,0);
-  seaSprite[0].setScale(sf::VideoMode::getDesktopMode().width/sea.getSize().x, sf::VideoMode::getDesktopMode().height/sea.getSize().y);
+  seaSprite[0].setScale(sf::VideoMode::getDesktopMode().width/float(sea.getSize().x),
+                        sf::VideoMode::getDesktopMode().height/float(sea.getSize().y));
   seaSprite[1].setTexture(sea);
   seaSprite[1].setPosition(sf::VideoMode::getDesktopMode().width,0);
-  seaSprite[1].setScale(sf::VideoMode::getDesktopMode().width/sea.getSize().x, sf::VideoMode::getDesktopMode().height/sea.getSize().y);
-
+  seaSprite[1].setScale(sf::VideoMode::getDesktopMode().width/float(sea.getSize().x),
+                        sf::VideoMode::getDesktopMode().height/float(sea.getSize().y));
   up_ = false;
   down_ = false;
   srand(time(NULL));
@@ -58,10 +59,10 @@ void GameManger::run() {
 
       seaSprite[0].move(sf::Vector2f(-constant::obstacleSpeed*deltaTime,0));
       seaSprite[1].move(sf::Vector2f(-constant::obstacleSpeed*deltaTime,0));
-      if (seaSprite[0].getPosition().x<-seaSprite[0].getGlobalBounds().width)
-        seaSprite[0].move(sf::VideoMode::getDesktopMode().width,0);
-      if (seaSprite[1].getPosition().x<-seaSprite[1].getGlobalBounds().width)
-        seaSprite[1].move(sf::VideoMode::getDesktopMode().width,0);
+      if (seaSprite[0].getPosition().x < -seaSprite[0].getGlobalBounds().width)
+        seaSprite[0].move(seaSprite[0].getGlobalBounds().width*2,0);
+      if (seaSprite[1].getPosition().x < -seaSprite[1].getGlobalBounds().width)
+        seaSprite[1].move(seaSprite[1].getGlobalBounds().width*2,0);
 
       window.clear();
       background.draw(window);
