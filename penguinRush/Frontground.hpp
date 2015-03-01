@@ -12,7 +12,7 @@ public:
     FrontGround();
     FrontGround(std::vector<std::string> paths);
 
-    void update(float deltatime);
+    void update(float deltatime, sf::RenderWindow &window);
 
     void draw(sf::RenderWindow & window);
 };

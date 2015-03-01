@@ -12,6 +12,7 @@ void GameManger::handleUltraHardwareOMG() {
     }
   up_ = up;
   down_ = down;
+
 }
 
 GameManger::GameManger() :
@@ -41,12 +42,13 @@ void GameManger::run() {
 
       penguin.update(deltaTime);
       background.update(deltaTime);
-
+      frontgroud.update(deltaTime, window);
 
       window.clear();
       background.draw(window);
-      penguin.draw(window);
-      obstacles.draw(window);
+      penguin.draw   (window);
+      obstacles.draw (window);
+      frontgroud.draw(window);
       window.display();
     }
 }

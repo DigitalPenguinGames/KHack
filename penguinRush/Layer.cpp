@@ -1,5 +1,5 @@
+#include <iostream>
 #include "Layer.hpp"
-
 
 Layer::Layer(){
     time = 0.0;
@@ -16,29 +16,30 @@ void Layer::setTextures(std::vector<sf::Texture> &newTextures){
     textures = newTextures;
 }
 
-void Layer::update(float deltatime){
+void Layer::update(float deltatime, sf::RenderWindow& window){
+//    std::cout << "spoiler" << std::endl;
     time += deltatime;
     auto speedIt = speeds.begin();
     for(auto it = activeSprites.begin(); it != activeSprites.end(); ++it){
-        (*it).move((*speedIt)*deltatime, 0);
+        (*it).move(-(*speedIt)*deltatime, 0);
         ++speedIt;
     }
 
     if(time >= spawnTimer){
         sf::Sprite sprite;
         sprite.setTexture(textures[rand()%textures.size()]);
-        sprite.setPosition(0,0);
+        float posY = window.getSize().y/2 + rand()%window.getSize().y/2;
+        sprite.setPosition(window.getSize().x,posY);
         activeSprites.push_back(sprite);
         speeds.push_back((rand())%(speed.y-speed.x) + speed.x);
-
+//std::cout << "penguins" << std::endl;
         spawnTimer = (rand())%(timer.y-timer.x) + timer.x;
-        time = 0;
+        time = 0.0;
     }
 
-    for(auto it = activeSprites.begin(); it != activeSprites.end(); ++it){
-        if((*it).getPosition().x < 0){
-            activeSprites.pop_front();
-        }
+    auto it = activeSprites.begin();
+    if((*it).getPosition().x < -(*it).getLocalBounds().width){
+        activeSprites.pop_front();
     }
 
 }
