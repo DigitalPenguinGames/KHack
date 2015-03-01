@@ -18,10 +18,10 @@ private:
   float minTime;
   float timer;
 
-  void initObstacles();
   bool pixelColission(sf::Vector2f penguin);
 public:
   ObstacleManager(int initX, int initY);
+  void initObstacles();
   void update(float deltaTime);
   void draw(sf::RenderWindow &window);
   bool isColissioning(sf::Vector2f penguin);

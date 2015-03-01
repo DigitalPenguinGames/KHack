@@ -46,7 +46,7 @@ void GameManger::run() {
       background.update(deltaTime);
       frontgroud.update(deltaTime, window);
       bool gameFinished = checkColissions();
-      if (gameFinished) exit(1);
+      if (gameFinished) obstacles.initObstacles();
 
       window.clear();
       background.draw(window);

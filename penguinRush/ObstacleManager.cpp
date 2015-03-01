@@ -2,15 +2,15 @@
 
 #include <iostream>
 
-void ObstacleManager::initObstacles() {
-  obstacles.clear();
-  maxTime = constant::maxTimeObstacles;
-  minTime = constant::minTimeObstacles;
-}
 
 bool ObstacleManager::pixelColission(sf::Vector2f penguin) {
   sf::Image img = (*obstacles.begin())->getImage();
-  return true;
+  sf::FloatRect rect = (*obstacles.begin())->getBounds();
+  sf::Vector2f pixel;
+  pixel.x = penguin.x-rect.left;
+  pixel.y = penguin.y-rect.top;
+  sf::Color color = img.getPixel(pixel.x, pixel.y);
+  return color.a > 0.5;
 }
 
 ObstacleManager::ObstacleManager(int initX, int initY) :
@@ -19,6 +19,12 @@ ObstacleManager::ObstacleManager(int initX, int initY) :
   timer(0)
 {
   initObstacles();
+}
+
+void ObstacleManager::initObstacles() {
+  obstacles.clear();
+  maxTime = constant::maxTimeObstacles;
+  minTime = constant::minTimeObstacles;
 }
 
 void ObstacleManager::update(float deltaTime) {
@@ -50,14 +56,8 @@ void ObstacleManager::draw(sf::RenderWindow &window) {
 bool ObstacleManager::isColissioning(sf::Vector2f penguin) {
   if (obstacles.size() > 0) {
       sf::FloatRect aux = (*obstacles.begin())->getBounds();
-      std::cout << aux.height << " " << aux.left << std::endl;
-      if (!(penguin.x < aux.left
-            || penguin.x > aux.left + aux.width
-            || penguin.y < aux.top
-            || penguin.y > aux.top + aux.height)) {
-          std::cout << "ioro" << std::endl;
-          return pixelColission(penguin);
-        }
+      ;
+      if (aux.contains(penguin.x,penguin.y)) return pixelColission(penguin);
     }
   return false;
 }

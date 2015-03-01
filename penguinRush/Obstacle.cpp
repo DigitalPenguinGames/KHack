@@ -5,17 +5,24 @@ Obstacle::Obstacle(obstacle::obsType type, float x, float y) {
   switch (type) {
     case obstacle::Iceberg:
       text.loadFromFile("res/iceberg2.png");
-      sprite.setOrigin(text.getSize().x/2,text.getSize().y/8);
       break;
-//    case obstacle::Buoy:
-//      text.loadFromFile("res/buoy.png");
-//      sprite.setOrigin(0);
+    case obstacle::Buoy:
+      text.loadFromFile("res/buoy.png");
       break;
     default:
       std::cout << "Te olvidas de algo" << std::endl;
       break;
     }
   sprite.setTexture(text);
+  switch (type) {
+    case obstacle::Iceberg:
+      sprite.setOrigin(0,sprite.getGlobalBounds().height/6);
+      break;
+    case obstacle::Buoy:
+      sprite.setOrigin(0,sprite.getGlobalBounds().height*4/5);
+    default:
+      break;
+    }
   pos = sf::Vector2f(x,y);
 }
 
@@ -33,10 +40,14 @@ bool Obstacle::isOutOfWindow() {
 }
 
 const sf::FloatRect &Obstacle::getBounds() {
-  return sprite.getLocalBounds();
+  return sprite.getGlobalBounds();
 }
 
-const sf::Image &Obstacle::getImage() {
+sf::Image Obstacle::getImage() {
   return text.copyToImage();
+}
+
+sf::Vector2f Obstacle::getPosition() {
+  return pos;
 }
 

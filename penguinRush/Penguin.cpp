@@ -54,7 +54,7 @@ void Penguin::setSpeed(const float &value) {
 }
 
 sf::Vector2f Penguin::getHead() {
-  float x = sprite[frame].getLocalBounds().width+constant::penguinInitX;
-  float y = sprite[frame].getLocalBounds().height/2+pos;
+  float x = sprite[frame].getGlobalBounds().width+constant::penguinInitX;
+  float y = sprite[frame].getGlobalBounds().height/2+pos;
   return sf::Vector2f(x,y);
 }

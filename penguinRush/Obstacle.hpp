@@ -15,7 +15,8 @@ public:
     void draw(sf::RenderWindow &window);
     bool isOutOfWindow();
     const sf::FloatRect &getBounds();
-    const sf::Image &getImage();
+    sf::Image getImage();
+    sf::Vector2f getPosition();
 };
 
 #endif // OBSTACLE_HPP
