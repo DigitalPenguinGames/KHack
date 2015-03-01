@@ -17,18 +17,18 @@ void GameManger::handleUltraHardwareOMG() {
 
 GameManger::GameManger() :
   window(sf::VideoMode::getDesktopMode(),"Penguin Rush"),
-  penguin(sf::VideoMode::getDesktopMode().height/2),
-  obstacles(sf::VideoMode::getDesktopMode().width,sf::VideoMode::getDesktopMode().height/2)
+  penguin(window.getSize().y/2),
+  obstacles(window.getSize().x,window.getSize().y/2)
 {
   sea.loadFromFile("res/sea.png");
   seaSprite[0].setTexture(sea);
   seaSprite[0].setPosition(0,0);
-  seaSprite[0].setScale(sf::VideoMode::getDesktopMode().width/float(sea.getSize().x),
-                        sf::VideoMode::getDesktopMode().height/float(sea.getSize().y));
+  seaSprite[0].setScale(window.getSize().x/float(sea.getSize().x),
+                        window.getSize().y/float(sea.getSize().y));
   seaSprite[1].setTexture(sea);
-  seaSprite[1].setPosition(sf::VideoMode::getDesktopMode().width,0);
-  seaSprite[1].setScale(sf::VideoMode::getDesktopMode().width/float(sea.getSize().x),
-                        sf::VideoMode::getDesktopMode().height/float(sea.getSize().y));
+  seaSprite[1].setPosition(window.getSize().x,0);
+  seaSprite[1].setScale(window.getSize().x/float(sea.getSize().x),
+                        window.getSize().y/float(sea.getSize().y));
   up_ = false;
   down_ = false;
   srand(time(NULL));
