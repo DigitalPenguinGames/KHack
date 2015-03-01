@@ -14,7 +14,7 @@ Penguin::Penguin(int middle) : middle(middle), particles(1000) {
   speed = 0;
   frame = 0;
   animationTimer = 0;
-
+  jumping = false;
   penguinSpeedUp = middle*2;
   gravity = penguinSpeedUp*2.5;
   softGravity = middle;
@@ -24,22 +24,25 @@ Penguin::Penguin(int middle) : middle(middle), particles(1000) {
 void Penguin::update(float deltaTime) {
   float aPos = pos;
   pos += deltaTime*speed;
+  if (pos < middle/16) pos = middle/16;
+  if (pos > 2*middle - middle/8) pos = 2*middle - middle/8;
 
   if ((aPos < middle && pos > middle && dir == direction::up  ) ||
-      (aPos > middle && pos < middle && dir == direction::down)) speed = speed / 10;
+      (aPos > middle && pos < middle && dir == direction::down)) {
+      speed = speed / 10;
+      jumping = false;
+  }
 
   float auxGrav = (abs(pos-middle)<100?softGravity:gravity);
 
   if (pos < middle) speed += auxGrav*deltaTime;
   else speed -= auxGrav*deltaTime;
 
-
-
   animationTimer += deltaTime;
   while (animationTimer > constant::timeToNextFramePeng) {
       animationTimer -= constant::timeToNextFramePeng;
       frame = (frame + 1) % 2;
-    }
+  }
 
   if(speed < 0 && pos < middle || speed > 0 && pos > middle || std::abs(pos-middle) < 20 ) {
       particles.setEmitter(sf::Vector2f(sprite[frame].getPosition().x,
@@ -53,6 +56,7 @@ void Penguin::update(float deltaTime) {
       time = sf::seconds(deltaTime);
       particles.update(time, false);
   }
+
 }
 
 void Penguin::draw(sf::RenderWindow &window) {
@@ -63,9 +67,12 @@ void Penguin::draw(sf::RenderWindow &window) {
 
 
 void Penguin::setSpeed(const float &value) {
-  if (value > 0) dir = direction::down;
-  else dir = direction::up;
-  speed = value*penguinSpeedUp;
+  if(!jumping){
+      if (value > 0) dir = direction::down;
+      else dir = direction::up;
+      jumping = true;
+      speed = value*penguinSpeedUp;
+  }
 }
 
 sf::Vector2f Penguin::getHead() {

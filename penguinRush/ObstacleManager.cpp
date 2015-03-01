@@ -2,10 +2,9 @@
 
 #include <iostream>
 
-
 bool ObstacleManager::pixelColission(sf::Vector2f penguin) {
-  sf::Image img = (*obstacles.begin())->getImage();
-  sf::FloatRect rect = (*obstacles.begin())->getBounds();
+    sf::Image img = (*obstacles.begin())->getImage();
+    sf::FloatRect rect = (*obstacles.begin())->getBounds();
   sf::Vector2f pixel;
   pixel.x = penguin.x-rect.left;
   pixel.y = penguin.y-rect.top;
@@ -31,9 +30,10 @@ void ObstacleManager::initObstacles() {
 void ObstacleManager::update(float deltaTime) {
   if (running) timer -= deltaTime;
   if (timer < 0) {
+      minTime *= 0.99; maxTime *= 0.99;
       int newObstacle = rand()%obstacle::qtt;
       obstacles.push_back(new Obstacle(static_cast<obstacle::obsType>(newObstacle), initX+300, initY));
-      timer = minTime + (rand()%int(maxTime-minTime));
+      timer = minTime + (rand()%int((maxTime-minTime)*100))/100;
     }
   for (auto it = obstacles.begin(); it != obstacles.end();++it) {
       (*it)->update(deltaTime);
