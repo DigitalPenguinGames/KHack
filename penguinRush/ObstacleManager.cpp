@@ -1,5 +1,7 @@
 #include "ObstacleManager.hpp"
 
+#include <iostream>
+
 void ObstacleManager::initObstacles() {
   obstacles.clear();
   maxTime = constant::maxTimeObstacles;
@@ -48,10 +50,14 @@ void ObstacleManager::draw(sf::RenderWindow &window) {
 bool ObstacleManager::isColissioning(sf::Vector2f penguin) {
   if (obstacles.size() > 0) {
       sf::FloatRect aux = (*obstacles.begin())->getBounds();
+      std::cout << aux.height << " " << aux.left << std::endl;
       if (!(penguin.x < aux.left
             || penguin.x > aux.left + aux.width
             || penguin.y < aux.top
-            || penguin.y > aux.top + aux.height)) return pixelColission(penguin);
-      return false;
+            || penguin.y > aux.top + aux.height)) {
+          std::cout << "ioro" << std::endl;
+          return pixelColission(penguin);
+        }
     }
+  return false;
 }
