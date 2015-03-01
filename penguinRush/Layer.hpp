@@ -22,7 +22,7 @@ public:
 
     void setTextures(std::vector<sf::Texture> & newTextures);
 
-    void update(float deltatime);
+    void update(float deltatime, sf::RenderWindow &window);
 
     void draw(sf::RenderWindow &window);
 

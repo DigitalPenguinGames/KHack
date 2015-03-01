@@ -7,6 +7,7 @@
 #include <SFML/Window.hpp>
 
 
+#include "Frontground.hpp"
 #include "Penguin.hpp"
 #include "ObstacleManager.hpp"
 #include "Background.hpp"
@@ -16,6 +17,7 @@ class GameManger {
 private:
     sf::RenderWindow window;
     Background background;
+    FrontGround frontgroud;
     ObstacleManager obstacles;
     Penguin penguin;
 
