@@ -33,6 +33,7 @@ GameManger::GameManger() :
   running(true),
   portada(true)
 {
+  window.setMouseCursorVisible(false);
   sea.loadFromFile("res/sea.png");
   seaSprite[0].setTexture(sea);
   seaSprite[0].setPosition(0,0);
