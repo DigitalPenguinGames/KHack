@@ -2,7 +2,7 @@
 
 Background::Background(){
     sprites = std::vector<sf::Sprite> (constant::qttBackgrounds);
-    textures = std::vector<sf::Texture> (constant::qttBackgrounds);
+    textures = std::vector<sf::Texture> (constant::qttBackgrounds+1);
     secondSprites = std::vector<sf::Sprite> (constant::qttBackgrounds);
 
 
@@ -17,6 +17,8 @@ Background::Background(){
         sprites[i].setPosition(0,0);
         secondSprites[i].setPosition(sprites[i].getLocalBounds().width,0);
     }
+    textures[4].loadFromFile("res/background1_2.png");
+    secondSprites[0].setTexture(textures[4]);
 }
 
 void Background::update(float deltatime){
