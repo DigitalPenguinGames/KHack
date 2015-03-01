@@ -25,6 +25,9 @@ GameManger::GameManger() :
   srand(time(NULL));
 }
 
+sf::Text text;
+sf::Font font;
+font.loadFromFile();
 void GameManger::run() {
   sf::Clock clock;
   clock.restart();
