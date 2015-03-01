@@ -2,6 +2,12 @@
 
 #include "GameManger.hpp"
 
-UI::UI(){}
+UI::UI(){
+  timer = 0;
+}
+
+void UI::update(float deltaTime) {
+  timer += deltaTime;
+}
 
 
