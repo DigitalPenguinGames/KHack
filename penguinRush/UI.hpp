@@ -15,6 +15,8 @@ private:
   sf::Text tTimer;
   sf::Text tHighscores;
   sf::Text finalMsg;
+  sf::Text yourScore;
+  sf::Text restartex;
   bool restart;
 public:
   UI(sf::Vector2u wSize);

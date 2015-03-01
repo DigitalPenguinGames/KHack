@@ -19,6 +19,20 @@ UI::UI(sf::Vector2u wSize) :
   finalMsg.setOrigin(finalMsg.getLocalBounds().width/2,0);
   finalMsg.setPosition(wSize.x/2, wSize.y/8);
 
+  yourScore.setFont(font);
+  yourScore.setColor(sf::Color::Black);
+  yourScore.setCharacterSize(60);
+  yourScore.setString("Your score is:");
+  yourScore.setOrigin(yourScore.getLocalBounds().width/2,0);
+  yourScore.setPosition(wSize.x/2, wSize.y*3/8);
+
+  restartex.setFont(font);
+  restartex.setColor(sf::Color::Black);
+  restartex.setCharacterSize(60);
+  restartex.setString("Step on pad to restart the game!");
+  restartex.setOrigin(restartex.getLocalBounds().width/2,0);
+  restartex.setPosition(wSize.x/2, wSize.y*6/8);
+
     //llegir del fitxer a highscores
     std::string score;
     std::ifstream myfile ("res/Spoiler.txt");
@@ -27,7 +41,7 @@ UI::UI(sf::Vector2u wSize) :
       myfile.close();
     }
     else std::cout << "Unable to open file" << std::endl;
-
+    highscores = std::stoi(score);
     tHighscores.setString(score);
 
 
@@ -88,6 +102,7 @@ void UI::draw(sf::RenderWindow &window, bool running) {
               std::ofstream myfile ("res/Spoiler.txt");
                 if (myfile.is_open()) {
                     myfile << str;
+
                     myfile.close();
                 }
                 else std::cout << "Unable to open file";
@@ -101,6 +116,8 @@ void UI::draw(sf::RenderWindow &window, bool running) {
           window.draw(tTimer);
           window.draw(tHighscores);
           window.draw(finalMsg);
+          window.draw(yourScore);
+          window.draw(restartex);
         }
     }
 }
