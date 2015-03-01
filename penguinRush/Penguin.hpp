@@ -10,6 +10,8 @@
 class Penguin {
 private:
 
+    bool jumping;
+
     float pos;
     int frame;
     int middle;
