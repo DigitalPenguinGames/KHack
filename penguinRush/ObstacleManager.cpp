@@ -6,6 +6,11 @@ void ObstacleManager::initObstacles() {
   minTime = constant::minTimeObstacles;
 }
 
+bool ObstacleManager::pixelColission(sf::Vector2f penguin) {
+  sf::Image img = (*obstacles.begin())->getImage();
+  return true;
+}
+
 ObstacleManager::ObstacleManager(int initX, int initY) :
   initX(initX),
   initY(initY),
@@ -37,5 +42,16 @@ void ObstacleManager::update(float deltaTime) {
 void ObstacleManager::draw(sf::RenderWindow &window) {
   for (auto it = obstacles.begin(); it != obstacles.end();++it) {
       (*it)->draw(window);
+    }
+}
+
+bool ObstacleManager::isColissioning(sf::Vector2f penguin) {
+  if (obstacles.size() > 0) {
+      sf::FloatRect aux = (*obstacles.begin())->getBounds();
+      if (!(penguin.x < aux.left
+            || penguin.x > aux.left + aux.width
+            || penguin.y < aux.top
+            || penguin.y > aux.top + aux.height)) return pixelColission(penguin);
+      return false;
     }
 }

@@ -32,3 +32,11 @@ bool Obstacle::isOutOfWindow() {
   return pos.x < -sprite.getLocalBounds().width;
 }
 
+const sf::FloatRect &Obstacle::getBounds() {
+  return sprite.getLocalBounds();
+}
+
+const sf::Image &Obstacle::getImage() {
+  return text.copyToImage();
+}
+

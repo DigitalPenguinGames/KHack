@@ -14,6 +14,8 @@ public:
     void update(float deltaTime);
     void draw(sf::RenderWindow &window);
     bool isOutOfWindow();
+    const sf::FloatRect &getBounds();
+    const sf::Image &getImage();
 };
 
 #endif // OBSTACLE_HPP

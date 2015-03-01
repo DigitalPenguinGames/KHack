@@ -46,6 +46,7 @@ void GameManger::run() {
       background.update(deltaTime);
       frontgroud.update(deltaTime, window);
       bool gameFinished = checkColissions();
+      if (gameFinished) exit(1);
 
       window.clear();
       background.draw(window);
@@ -58,5 +59,5 @@ void GameManger::run() {
 
 bool GameManger::checkColissions() {
   sf::Vector2f penguinHead = penguin.getHead();
-  return isColissioning(penguinHead);
+  return obstacles.isColissioning(penguinHead);
 }

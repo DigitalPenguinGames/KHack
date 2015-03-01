@@ -19,6 +19,7 @@ private:
   float timer;
 
   void initObstacles();
+  bool pixelColission(sf::Vector2f penguin);
 public:
   ObstacleManager(int initX, int initY);
   void update(float deltaTime);
