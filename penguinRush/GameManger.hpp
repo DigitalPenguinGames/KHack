@@ -24,6 +24,10 @@ private:
     bool up_;
     bool down_;
 
+    // Sea
+    sf::Texture sea;
+    sf::Sprite seaSprite[2];
+
     void handleUltraHardwareOMG();
 public:
     GameManger();
