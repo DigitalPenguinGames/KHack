@@ -1,6 +1,9 @@
 #ifndef UI_HPP
 #define UI_HPP
 
+#include <string>
+#include <fstream>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 class UI {

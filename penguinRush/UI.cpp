@@ -1,10 +1,6 @@
 #include "UI.hpp"
-
 #include "GameManger.hpp"
-
 #include <sstream>
-#include <string>
-
 
 UI::UI(sf::Vector2u wSize) :
   wSize(wSize),
@@ -22,10 +18,17 @@ UI::UI(sf::Vector2u wSize) :
   finalMsg.setString("You lose!");
   finalMsg.setOrigin(finalMsg.getLocalBounds().width/2,0);
   finalMsg.setPosition(wSize.x/2, wSize.y/8);
-  std::stringstream text2;
-  text2 << int(highscores);
-  std::string str = text2.str();
-  tHighscores.setString(str);
+
+    //llegir del fitxer a highscores
+    std::string score;
+    std::ifstream myfile ("res/Spoiler.txt");
+    if (myfile.is_open()) {
+      std::getline(myfile,score);
+      myfile.close();
+    }
+    else std::cout << "Unable to open file" << std::endl;
+
+    tHighscores.setString(score);
 
 
 }
@@ -72,6 +75,7 @@ void UI::draw(sf::RenderWindow &window, bool running) {
 
 
           if (timer > highscores) {
+
               highscores = timer;
               std::stringstream text2;
               text2 << int(highscores);
@@ -79,6 +83,17 @@ void UI::draw(sf::RenderWindow &window, bool running) {
               tHighscores.setString(str);
               tHighscores.setOrigin(tHighscores.getLocalBounds().width,0);
               tHighscores.setPosition(wSize.x-50,50);
+
+              //escriure highscore
+              std::ofstream myfile ("res/Spoiler.txt");
+                if (myfile.is_open()) {
+                    myfile << str;
+                    myfile.close();
+                }
+                else std::cout << "Unable to open file";
+
+              system("python scripts/yoAll.py");
+
             }
         }
 
