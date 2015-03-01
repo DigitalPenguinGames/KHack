@@ -12,6 +12,7 @@
 #include "ObstacleManager.hpp"
 #include "Background.hpp"
 #include "Constants.hpp"
+#include "UI.hpp"
 
 class GameManger {
 private:
@@ -20,6 +21,7 @@ private:
     FrontGround frontgroud;
     ObstacleManager obstacles;
     Penguin penguin;
+    UI ui;
 
     bool up_;
     bool down_;

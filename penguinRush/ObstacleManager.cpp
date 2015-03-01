@@ -15,8 +15,7 @@ bool ObstacleManager::pixelColission(sf::Vector2f penguin) {
 
 ObstacleManager::ObstacleManager(int initX, int initY) :
   initX(initX),
-  initY(initY),
-  timer(0)
+  initY(initY)
 {
   initObstacles();
 }
@@ -25,10 +24,12 @@ void ObstacleManager::initObstacles() {
   obstacles.clear();
   maxTime = constant::maxTimeObstacles;
   minTime = constant::minTimeObstacles;
+  timer = 0;
+  running = true;
 }
 
 void ObstacleManager::update(float deltaTime) {
-  timer -= deltaTime;
+  if (running) timer -= deltaTime;
   if (timer < 0) {
       int newObstacle = rand()%obstacle::qtt;
       obstacles.push_back(new Obstacle(static_cast<obstacle::obsType>(newObstacle), initX+300, initY));
@@ -56,8 +57,9 @@ void ObstacleManager::draw(sf::RenderWindow &window) {
 bool ObstacleManager::isColissioning(sf::Vector2f penguin) {
   if (obstacles.size() > 0) {
       sf::FloatRect aux = (*obstacles.begin())->getBounds();
-      ;
       if (aux.contains(penguin.x,penguin.y)) return pixelColission(penguin);
     }
   return false;
 }
+
+void ObstacleManager::stop() {running = false;}
