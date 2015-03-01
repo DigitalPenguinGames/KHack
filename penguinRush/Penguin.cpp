@@ -1,5 +1,6 @@
 #include "Penguin.hpp"
 
+#include <math.h>
 #include <iostream>
 
 Penguin::Penguin(int middle) : middle(middle), particles(1000) {
@@ -57,6 +58,7 @@ void Penguin::update(float deltaTime) {
       particles.update(time, false);
   }
 
+  //sprite[frame].setRotation(std::atan((speed/(constant::obstacleSpeed))*180.f/M_PI));
 }
 
 void Penguin::draw(sf::RenderWindow &window) {
