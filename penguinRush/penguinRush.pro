@@ -12,7 +12,9 @@ SOURCES += main.cpp \
     Penguin.cpp \
     Background.cpp \
     Obstacle.cpp \
-    ObstacleManager.cpp
+    ObstacleManager.cpp \
+    Frontground.cpp \
+    Layer.cpp
 
 HEADERS += \
     GameManger.hpp \
@@ -20,5 +22,7 @@ HEADERS += \
     Background.hpp \
     Obstacle.hpp \
     Constants.hpp \
-    ObstacleManager.hpp
+    ObstacleManager.hpp \
+    Frontground.hpp \
+    Layer.hpp
 
