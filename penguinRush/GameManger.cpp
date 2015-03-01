@@ -17,8 +17,7 @@ void GameManger::handleUltraHardwareOMG() {
 GameManger::GameManger() :
   window(sf::VideoMode::getDesktopMode(),"Penguin Rush"),
   penguin(sf::VideoMode::getDesktopMode().height/2),
-  obstacles(sf::VideoMode::getDesktopMode().width,sf::VideoMode::getDesktopMode().height/2),
-  o(obstacle::Iceberg,200,200)
+  obstacles(sf::VideoMode::getDesktopMode().width,sf::VideoMode::getDesktopMode().height/2)
 {
   up_ = false;
   down_ = false;
@@ -55,6 +54,7 @@ void GameManger::run() {
     }
 }
 
-bool GameManger::checkColissions()
-{
+bool GameManger::checkColissions() {
+  sf::Vector2f penguinHead = penguin.getHead();
+  return isColissioning(penguinHead);
 }

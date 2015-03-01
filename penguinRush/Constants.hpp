@@ -8,6 +8,7 @@ namespace constant {
     static const float backgroundSpeed [] = {0, 5, 50, 500};
     static const float minTimeObstacles = 5;
     static const float maxTimeObstacles = minTimeObstacles+1;
+    static const float penguinInitX = 100;
 
 }
 

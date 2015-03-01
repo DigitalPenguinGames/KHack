@@ -42,7 +42,7 @@ void Penguin::update(float deltaTime) {
 }
 
 void Penguin::draw(sf::RenderWindow &window) {
-  sprite[frame].setPosition(100,pos);
+  sprite[frame].setPosition(constant::penguinInitX,pos);
   window.draw(sprite[frame]);
 }
 
@@ -51,4 +51,10 @@ void Penguin::setSpeed(const float &value) {
   if (value > 0) dir = direction::down;
   else dir = direction::up;
   speed = value*penguinSpeedUp;
+}
+
+sf::Vector2f Penguin::getHead() {
+  float x = sprite[frame].getLocalBounds().width+constant::penguinInitX;
+  float y = sprite[frame].getLocalBounds().height/2+pos;
+  return sf::Vector2f(x,y);
 }

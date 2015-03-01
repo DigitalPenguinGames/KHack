@@ -23,9 +23,6 @@ private:
     bool down_;
 
     void handleUltraHardwareOMG();
-
-
-    Obstacle o;
 public:
     GameManger();
     void run();

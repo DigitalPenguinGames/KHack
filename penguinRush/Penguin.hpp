@@ -26,6 +26,7 @@ public:
     void update(float deltaTime);
     void draw(sf::RenderWindow &window);
     void setSpeed(const float &value);
+    sf::Vector2f getHead();
 };
 
 #endif // PENGUIN_HPP

@@ -23,6 +23,7 @@ public:
   ObstacleManager(int initX, int initY);
   void update(float deltaTime);
   void draw(sf::RenderWindow &window);
+  bool isColissioning(sf::Vector2f penguin);
 };
 
 #endif // OBSTACLEMANAGER_HPP
