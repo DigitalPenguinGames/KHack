@@ -33,6 +33,11 @@ private:
     sf::Texture sea;
     sf::Sprite seaSprite[2];
 
+    // Portada
+    bool portada;
+    sf::Texture tPortada;
+    sf::Sprite sPortada;
+
     void handleUltraHardwareOMG();
 public:
     GameManger();
