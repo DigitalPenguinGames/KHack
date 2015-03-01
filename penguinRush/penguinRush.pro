@@ -24,5 +24,6 @@ HEADERS += \
     Constants.hpp \
     ObstacleManager.hpp \
     Frontground.hpp \
-    Layer.hpp
+    Layer.hpp \
+    ParticleSystem.hpp
 

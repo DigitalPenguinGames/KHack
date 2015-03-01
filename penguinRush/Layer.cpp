@@ -28,7 +28,7 @@ void Layer::update(float deltatime, sf::RenderWindow& window){
     if(time >= spawnTimer){
         sf::Sprite sprite;
         sprite.setTexture(textures[rand()%textures.size()]);
-        float posY = window.getSize().y/2 + rand()%window.getSize().y/2;
+        float posY = window.getSize().y/2 + rand()%window.getSize().y/2 +20;
         sprite.setPosition(window.getSize().x,posY);
         activeSprites.push_back(sprite);
         speeds.push_back((rand())%(speed.y-speed.x) + speed.x);
