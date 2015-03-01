@@ -1,9 +1,9 @@
 #include "Background.hpp"
 
 Background::Background(){
-    sprites = std::vector<sf::Sprite> (4);
-    textures = std::vector<sf::Texture> (4);
-    secondSprites = std::vector<sf::Sprite> (4);
+    sprites = std::vector<sf::Sprite> (constant::qttBackgrounds);
+    textures = std::vector<sf::Texture> (constant::qttBackgrounds);
+    secondSprites = std::vector<sf::Sprite> (constant::qttBackgrounds);
 
 
     textures[0].loadFromFile("res/background.png");
@@ -15,7 +15,7 @@ Background::Background(){
         sprites[i].setTexture(textures[i]);
         secondSprites[i].setTexture(textures[i]);
         sprites[i].setPosition(0,0);
-        secondSprites[i].setPosition(2000,0);
+        secondSprites[i].setPosition(sprites[i].getLocalBounds().width,0);
     }
 }
 
