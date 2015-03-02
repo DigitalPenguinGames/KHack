@@ -1,33 +1,32 @@
 #ifndef GAMEMANGER_HPP
 #define GAMEMANGER_HPP
 
-#include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 
-
-#include "Frontground.hpp"
-#include "Penguin.hpp"
-#include "ObstacleManager.hpp"
-#include "Background.hpp"
-#include "Constants.hpp"
 #include "UI.hpp"
+#include "Penguin.hpp"
+#include "Constants.hpp"
+#include "Background.hpp"
+#include "Frontground.hpp"
+#include "ObstacleManager.hpp"
 
 class GameManger {
 private:
-    sf::RenderWindow window;
+
+    Penguin penguin;
     Background background;
     FrontGround frontgroud;
+    sf::RenderWindow window;
     ObstacleManager obstacles;
-    Penguin penguin;
 
     UI ui;
-    bool running;
-    float timerRestart;
-
     bool up_;
     bool down_;
+    bool running;
+    float timerRestart;
 
     // Sea
     sf::Texture sea;
@@ -37,16 +36,17 @@ private:
     bool portada;
     sf::Texture tPortada;
     sf::Sprite sPortada;
-    sf::Font font;
     sf::Text press;
+    sf::Font font;
     sf::Text yo;
 
       sf::Music song;
 
     void handleUltraHardwareOMG();
+    
 public:
     GameManger();
-    void run();
+    void   run();
     bool checkColissions();
 };
 
