@@ -29,8 +29,8 @@ void GameManger::handleUltraHardwareOMG() {
 
 GameManger::GameManger() :
   window(sf::VideoMode::getDesktopMode(),"Penguin Rush",sf::Style::Fullscreen),
-  penguin(window.getSize().y*1.05/2),
   obstacles(window.getSize().x,window.getSize().y*1.05/2),
+  penguin(window.getSize().y*1.05/2),
   ui(window.getSize()),
   running(true),
   portada(true)

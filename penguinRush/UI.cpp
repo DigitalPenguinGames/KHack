@@ -6,8 +6,8 @@
 
 UI::UI(sf::Vector2u wSize) :
   wSize(wSize),
-  restart(true),
-  timer(0)
+  timer(0),
+  restart(true)
 {
   font.loadFromFile("res/font.otf");
   tTimer.setFont(font);

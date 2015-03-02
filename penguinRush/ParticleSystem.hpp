@@ -32,7 +32,7 @@ public:
             m_vertices[i].position += p.velocity * elapsed.asSeconds();
 
             // update the alpha (transparency) of the particle according to its lifetime
-            float ratio = p.lifetime.asSeconds() / m_lifetime.asSeconds();
+            //float ratio = p.lifetime.asSeconds() / m_lifetime.asSeconds();
             //m_vertices[i].color = sf::Color::Black;
             //m_vertices[i].color.a = static_cast<sf::Uint8>(ratio * 255);
         }

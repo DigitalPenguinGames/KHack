@@ -48,7 +48,7 @@ bool Obstacle::isOutOfWindow() {
   return pos.x < -sprite.getLocalBounds().width;
 }
 
-const sf::FloatRect &Obstacle::getBounds() {
+const sf::FloatRect Obstacle::getBounds() {
   return sprite.getGlobalBounds();
 }
 
