@@ -37,6 +37,7 @@ private:
     sf::Texture tPortada;
     sf::Sprite sPortada;
     sf::Text press;
+    sf::Font font;
     sf::Text yo;
 
     void handleUltraHardwareOMG();
