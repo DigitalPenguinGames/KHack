@@ -1,3 +1,5 @@
+#include <SFML/Audio.hpp>
+#include <iostream>
 #include "GameManger.hpp"
 
 void GameManger::handleUltraHardwareOMG() {
@@ -26,7 +28,7 @@ void GameManger::handleUltraHardwareOMG() {
 
 
 GameManger::GameManger() :
-  window(sf::VideoMode::getFullscreenModes()[0],"Penguin Rush",sf::Style::Fullscreen),
+  window(sf::VideoMode::getDesktopMode(),"Penguin Rush",sf::Style::Fullscreen),
   penguin(window.getSize().y*1.05/2),
   obstacles(window.getSize().x,window.getSize().y*1.05/2),
   ui(window.getSize()),
@@ -62,11 +64,13 @@ GameManger::GameManger() :
   yo.setCharacterSize(50);
   yo.setPosition(window.getSize().x/30,window.getSize().y*3/4);
 
+
    //original song gmz_-_Parametaphoriquement.mp3
    if(!song.openFromFile("res/gmzsong.ogg")) std::cout << "music load fail" << std::endl;
    song.setLoop(true);
    song.play();
    song.setVolume(50);
+
 }
 
 
