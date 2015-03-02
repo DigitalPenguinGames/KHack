@@ -61,6 +61,12 @@ GameManger::GameManger() :
   yo.setString("Yo: PENGUINRUSH");
   yo.setCharacterSize(50);
   yo.setPosition(window.getSize().x/30,window.getSize().y*3/4);
+
+   //original song gmz_-_Parametaphoriquement.mp3
+   if(!song.openFromFile("res/gmzsong.ogg")) std::cout << "music load fail" << std::endl;
+   song.setLoop(true);
+   song.play();
+   song.setVolume(50);
 }
 
 
