@@ -109,7 +109,8 @@ void UI::draw(sf::RenderWindow &window, bool running) {
                 }
                 else std::cout << "Unable to open file";
 
-              system("python scripts/yoAll.py");
+              int error = system("python scripts/yoAll.py");
+              if(error != 0) std::cout << "error on yo sending it must be your computer not our program" << std::endl;
 
             }
         }
