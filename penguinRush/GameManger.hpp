@@ -40,9 +40,10 @@ private:
     sf::Text yo;
 
     void handleUltraHardwareOMG();
+    
 public:
     GameManger();
-    void run();
+    void   run();
     bool checkColissions();
 };
 
