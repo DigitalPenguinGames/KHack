@@ -41,6 +41,8 @@ private:
     sf::Text press;
     sf::Text yo;
 
+      sf::Music song;
+
     void handleUltraHardwareOMG();
 public:
     GameManger();

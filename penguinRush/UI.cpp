@@ -17,7 +17,7 @@ UI::UI(sf::Vector2u wSize) :
   finalMsg.setFont(font);
   finalMsg.setColor(sf::Color::Black);
   finalMsg.setCharacterSize(60);
-  finalMsg.setString("You lose!");
+  finalMsg.setString("You lost!");
   finalMsg.setOrigin(finalMsg.getLocalBounds().width/2,0);
   finalMsg.setPosition(wSize.x/2, wSize.y/8);
 
