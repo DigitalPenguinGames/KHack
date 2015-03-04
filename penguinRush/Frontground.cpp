@@ -29,7 +29,7 @@ FrontGround::FrontGround(std::vector<std::string> paths){
     std::vector<sf::Texture> textures;
     sf::Texture tex;
 
-    for(int i = 0; i < paths.size(); ++i){
+    for(uint i = 0; i < paths.size(); ++i){
         tex.loadFromFile(paths[i]);
         textures.push_back(tex);
     }
@@ -40,13 +40,13 @@ FrontGround::FrontGround(std::vector<std::string> paths){
 }
 
 void FrontGround::update(float deltatime, sf::RenderWindow &window){
-    for(int i = 0; i < layers.size(); ++i){
+    for(uint i = 0; i < layers.size(); ++i){
         layers[i].update(deltatime, window);
     }
 }
 
 void FrontGround::draw(sf::RenderWindow &window){
-    for(int i = 0; i < layers.size(); ++i){
+    for(uint i = 0; i < layers.size(); ++i){
         layers[i].draw(window);
     }
 }

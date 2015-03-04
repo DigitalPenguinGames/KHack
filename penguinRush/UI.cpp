@@ -6,8 +6,8 @@
 
 UI::UI(sf::Vector2u wSize) :
   wSize(wSize),
-  restart(true),
-  timer(0)
+  timer(0),
+  restart(true)
 {
   font.loadFromFile("res/font.otf");
   tTimer.setFont(font);
@@ -109,7 +109,8 @@ void UI::draw(sf::RenderWindow &window, bool running) {
                 }
                 else std::cout << "Unable to open file";
 
-              system("python scripts/yoAll.py");
+              int error = system("python scripts/yoAll.py");
+              if(error != 0) std::cout << "error on yo sending it must be your computer not our program" << std::endl;
 
             }
         }

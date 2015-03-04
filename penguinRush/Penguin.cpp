@@ -45,7 +45,7 @@ void Penguin::update(float deltaTime) {
       frame = (frame + 1) % 2;
   }
 
-  if(speed < 0 && pos < middle || speed > 0 && pos > middle || std::abs(pos-middle) < 20 ) {
+  if((speed < 0 && pos < middle) || (speed > 0 && pos > middle) || std::abs(pos-middle) < 20 ) {
       particles.setEmitter(sf::Vector2f(sprite[frame].getPosition().x,
           sprite[frame].getPosition().y+sprite[frame].getGlobalBounds().height/2));
       sf::Time time;

@@ -6,27 +6,28 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "UI.hpp"
-#include "Penguin.hpp"
-#include "Constants.hpp"
-#include "Background.hpp"
+
 #include "Frontground.hpp"
+#include "Penguin.hpp"
 #include "ObstacleManager.hpp"
+#include "Background.hpp"
+#include "Constants.hpp"
+#include "UI.hpp"
 
 class GameManger {
 private:
-
-    Penguin penguin;
+    sf::RenderWindow window;
     Background background;
     FrontGround frontgroud;
-    sf::RenderWindow window;
     ObstacleManager obstacles;
+    Penguin penguin;
 
     UI ui;
-    bool up_;
-    bool down_;
     bool running;
     float timerRestart;
+
+    bool up_;
+    bool down_;
 
     // Sea
     sf::Texture sea;
@@ -36,18 +37,17 @@ private:
     bool portada;
     sf::Texture tPortada;
     sf::Sprite sPortada;
+    sf::Music song;
     sf::Text press;
     sf::Font font;
     sf::Music music;
     sf::Text yo;
 
-      sf::Music song;
-
     void handleUltraHardwareOMG();
 
 public:
     GameManger();
-    void   run();
+    void run();
     bool checkColissions();
 };
 

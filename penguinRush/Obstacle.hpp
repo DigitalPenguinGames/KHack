@@ -14,7 +14,7 @@ public:
     void update(float deltaTime);
     void draw(sf::RenderWindow &window);
     bool isOutOfWindow();
-    const sf::FloatRect &getBounds();
+    const sf::FloatRect getBounds();
     sf::Image getImage();
     sf::Vector2f getPosition();
 };
