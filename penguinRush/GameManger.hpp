@@ -38,12 +38,13 @@ private:
     sf::Sprite sPortada;
     sf::Text press;
     sf::Font font;
+    sf::Music music;
     sf::Text yo;
 
       sf::Music song;
 
     void handleUltraHardwareOMG();
-    
+
 public:
     GameManger();
     void   run();
