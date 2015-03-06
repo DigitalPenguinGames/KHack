@@ -11,6 +11,7 @@ class Penguin {
 private:
 
     bool jumping;
+    float jumpingTimer;
 
     float pos;
     int frame;
