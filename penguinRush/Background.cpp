@@ -18,7 +18,7 @@ Background::Background(){
         secondSprites[i].setPosition(sprites[i].getLocalBounds().width,0);
     }
     textures[4].loadFromFile("res/background1_2.png");
-    secondSprites[0].setTexture(textures[4]);
+    secondSprites[1].setTexture(textures[4]);
 }
 
 void Background::update(float deltatime){
